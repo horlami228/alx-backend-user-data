@@ -2,6 +2,7 @@
 
 """ Module of Auth views"""
 from api.v1.auth.auth import Auth
+import base64
 
 
 class BasicAuth(Auth):
@@ -21,3 +22,20 @@ class BasicAuth(Auth):
             return None
         else:
             return authorization_header[6:]
+
+    def decode_base64_authorization_header(self,
+                                           base64_authorization_header:
+                                           str) -> str:
+        """Decodes the base64 authorization header"""
+        if base64_authorization_header is None\
+                or type(base64_authorization_header) is not str:
+            return None
+
+        try:
+            decode_byte = base64.b64decode(base64_authorization_header)
+        except Exception:
+            return None
+
+        decoded_str = decode_byte.decode('utf-8')
+
+        return decoded_str
