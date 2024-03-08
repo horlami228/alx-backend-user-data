@@ -63,3 +63,28 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     )
 
     return connection
+
+
+def main():
+    """function that returns a database connection
+        and retrieve all users and display in a filterd format
+    """
+
+    db = get_db()
+    cursor = db.cursor()
+    logger = get_logger()
+    cursor.execute("SELECT * FROM users;")
+
+    feild_names = [i[0] for i in cursor.description]
+
+    for row in cursor:
+        full_str = "".join(f"{f}={str(r)};" for r,
+                           f in zip(row, feild_names))
+        logger.info(full_str)
+
+    cursor.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
