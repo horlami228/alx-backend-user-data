@@ -51,8 +51,8 @@ class DB:
         if result is None:
             raise NoResultFound
         return result
-    
-    def update_user(self, user_id: str, **kwargs) -> None:
+
+    def update_user(self, user_id: int, **kwargs) -> None:
         """Update user attributes"""
 
         user_keys = User.__table__.columns.keys()
