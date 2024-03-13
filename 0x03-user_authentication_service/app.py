@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-
 from flask import Flask, jsonify
 
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+
 
 @app.route("/")
 def home():
