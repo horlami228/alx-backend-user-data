@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""This module contains the Auth class"""
+
 import bcrypt
 from db import DB
 from user import User
