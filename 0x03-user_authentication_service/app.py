@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""This module is the entry point of the REST API"""
 from auth import Auth
 from flask import Flask, jsonify, request, abort, url_for, redirect
 
